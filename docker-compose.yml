@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  money-mountain:
+#    image: doug7410/money-mountain:v1
+    ports:
+      - "8182:80"
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./:/var/www
