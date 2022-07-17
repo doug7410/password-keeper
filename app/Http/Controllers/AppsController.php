@@ -12,7 +12,7 @@ class AppsController extends Controller
 {
     public function index(): \Inertia\Response
     {
-        $apps = App::all()->map(function (App $app) {
+        $apps = App::where('user_id', auth()->id())->get()->map(function (App $app) {
             return array_merge(
                 $app->toArray(),
                 ['password' => Crypt::decryptString($app->password)]

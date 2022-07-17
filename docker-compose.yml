@@ -1,11 +1,10 @@
 version: "3.9"
 services:
-  money-mountain:
-#    image: doug7410/money-mountain:v1
+  password-keeper:
     ports:
       - "8182:80"
     build:
       context: .
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/DockerfileLocal
     volumes:
       - ./:/var/www

@@ -31,7 +31,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::prefix('apps')->group(function(){
+Route::prefix('apps')->middleware(['auth'])->group(function(){
     Route::get('/', [\App\Http\Controllers\AppsController::class, 'index'])->name('apps');
     Route::get('/create', [\App\Http\Controllers\AppsController::class, 'create'])->name('create_app');
     Route::post('/store', [\App\Http\Controllers\AppsController::class, 'store'])->name('save_app');
