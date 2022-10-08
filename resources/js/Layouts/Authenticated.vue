@@ -82,6 +82,12 @@ const showingNavigationDropdown = ref(false);
                         <BreezeResponsiveNavLink :href="route('create_app')" :active="route().current('create_app')">
                             + New Password
                         </BreezeResponsiveNavLink>
+                        <BreezeResponsiveNavLink :href="route('apps')" :active="route().current('apps')">
+                            Passwords
+                        </BreezeResponsiveNavLink>
+                        <BreezeResponsiveNavLink :href="route('create_app')" :active="route().current('create_app')">
+                            + New Password
+                        </BreezeResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
