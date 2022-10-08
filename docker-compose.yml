@@ -2,7 +2,7 @@ version: "3.9"
 services:
   password-keeper:
     ports:
-      - "8182:80"
+      - "8183:80"
     build:
       context: .
       dockerfile: docker/DockerfileLocal
