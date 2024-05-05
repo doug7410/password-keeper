@@ -16,17 +16,11 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-        'test' => 'WOO!'
-    ]);
+    return redirect('/dashboard');
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return redirect(route('apps'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
@@ -34,5 +28,8 @@ require __DIR__.'/auth.php';
 Route::prefix('apps')->middleware(['auth'])->group(function(){
     Route::get('/', [\App\Http\Controllers\AppsController::class, 'index'])->name('apps');
     Route::get('/create', [\App\Http\Controllers\AppsController::class, 'create'])->name('create_app');
+    Route::get('/edit/{app}', [\App\Http\Controllers\AppsController::class, 'show'])->name('edit_app');
+    Route::patch('/{app}', [\App\Http\Controllers\AppsController::class, 'update'])->name('update_app');
+    Route::delete('/{app}', [\App\Http\Controllers\AppsController::class, 'delete'])->name('delete_app');
     Route::post('/store', [\App\Http\Controllers\AppsController::class, 'store'])->name('save_app');
 });

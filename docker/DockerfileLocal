@@ -1,5 +1,7 @@
 FROM doug7410/laravel_base:v1
 
+COPY . /var/www
+
 WORKDIR /var/www
 
 COPY docker/start-container /usr/local/bin/start-container
